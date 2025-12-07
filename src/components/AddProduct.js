@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
-const AddProduct = ({ onAddProduct, editMode, productToEdit }) => {
-  const category = ["Electronics", "Grocery", "Clothing", "Books", "Other"];
+const AddProduct = ({ onAddProduct, editMode, productToEdit , category }) => {
+  
 
   // const [formData, setFormData] = useState({
   //   productName: "",
@@ -62,6 +62,7 @@ const AddProduct = ({ onAddProduct, editMode, productToEdit }) => {
         value={price}
         onChange={(e) => setPrice(e.target.value)}
       />
+      <label>Category </label>
       <select
         value={categorcies}
         onChange={(e) => setCategorcies(e.target.value)}
