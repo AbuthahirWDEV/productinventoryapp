@@ -14,6 +14,7 @@ function App() {
   const [searchQuery, setSearchQuery] = useState("");
   const [message, setMessage] = useState("");
   const [filtervalue, setFiltervalue] = useState("");
+  const [sortValue, setSortValue] = useState("");
   const category = ["Electronics", "Grocery", "Clothing", "Books", "Other"];
   function handleAddProducts(newProduct) {
     if (isEditMode) {
@@ -45,9 +46,20 @@ function App() {
 
   function handleFilterValue(filterValue) {
     setFiltervalue(filterValue);
-    console.log(filterValue);
   }
-  const filterList = products
+  // if(products.map(p => p.categorcies !== )){
+
+  // }
+
+  function handleSort(sortValue) {
+    setSortValue(sortValue);
+  }
+
+  // if (sortValue === "Low to High") {
+  //   products.sort((a, b) => a.price - b.price);
+  // }
+  //  derived state
+  const filterList = [...products]
     .filter((product) =>
       product.productName.toLowerCase().includes(searchQuery.toLowerCase())
     )
@@ -55,7 +67,12 @@ function App() {
       filtervalue === "All"
         ? product
         : product.categorcies.toLowerCase().includes(filtervalue.toLowerCase())
-    );
+    )
+    .sort((a, b) => {
+      if (sortValue === "Low to High") return a.price - b.price;
+      if (sortValue === "High to Low") return b.price - a.price;
+      return 0;
+    });
 
   //  To show different message for Search bar empty
   useEffect(() => {
@@ -78,7 +95,7 @@ function App() {
 
       <SearchBar onSearch={handleSearch} />
 
-      <SortBar />
+      <SortBar onSort={handleSort} />
 
       {message ? (
         message

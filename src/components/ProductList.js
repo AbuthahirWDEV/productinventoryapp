@@ -1,9 +1,8 @@
 import React from "react";
 
-const ProductList = ({ products, onDelete , onEdit}) => {
-
+const ProductList = ({ products, onDelete, onEdit }) => {
   return (
-    <ul>
+    <ul style={{ display: "flex" }}>
       {products.length === 0 ? (
         <li style={{ listStyle: "none" }}>
           No product available, please add products...
@@ -17,7 +16,7 @@ const ProductList = ({ products, onDelete , onEdit}) => {
               margin: "6px",
               listStyle: "none",
               padding: "12px",
-              width: "600px",
+              width: "200px",
             }}
           >
             <h5>Product Name: {product.productName}</h5>
@@ -25,7 +24,7 @@ const ProductList = ({ products, onDelete , onEdit}) => {
             <p>Category: {product.categorcies}</p>
 
             <label>In Stock</label>
-            <input type="checkbox" checked={product.inStock} />
+            <input type="checkbox" checked={product.inStock}/>
 
             <div>
               <button onClick={() => onEdit(product.id)}>Edit</button>

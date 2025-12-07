@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 const FilterBar = ({ category , onFilter}) => {
-  const filterCategories = [...category, "All"]
+  const filterCategories = ["All",...category ]
   return (
     <div>
       <span>FilterBar</span>

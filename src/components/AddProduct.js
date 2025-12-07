@@ -1,15 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const AddProduct = ({ onAddProduct, editMode, productToEdit , category }) => {
-  
-
-  // const [formData, setFormData] = useState({
-  //   productName: "",
-  //   price: "",
-  //   category: "",
-  //   inStock: false,
-  // });
-
+const AddProduct = ({ onAddProduct, editMode, productToEdit, category }) => {
   useEffect(() => {
     if (editMode && productToEdit) {
       setProductName(productToEdit.productName);
@@ -49,7 +40,7 @@ const AddProduct = ({ onAddProduct, editMode, productToEdit , category }) => {
   }
   return (
     <form onSubmit={handleSubmit}>
-      <h2>Add Products</h2>
+      <h2>{editMode ? "Edit Products" : "Add Products"}</h2>
       <label>Prodcut name</label>
       <input
         type="text"
@@ -75,9 +66,9 @@ const AddProduct = ({ onAddProduct, editMode, productToEdit , category }) => {
       <input
         type="checkbox"
         checked={inStock}
-        onChange={(e) => setInStock(e.target.value)}
+        onChange={(e) => setInStock(e.target.checked)}
       />
-      <button>Add Prodcut</button>
+      <button>{editMode ? "Update" : "Add Product"}</button>
     </form>
   );
 };
