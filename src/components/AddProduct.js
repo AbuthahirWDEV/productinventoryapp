@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from "react";
 
 const AddProduct = ({ onAddProduct, editMode, productToEdit, category }) => {
+  const [productName, setProductName] = useState("");
+  const [price, setPrice] = useState("");
+  const [categorcies, setCategorcies] = useState("Electronics");
+  const [inStock, setInStock] = useState(false);
+
   useEffect(() => {
     if (editMode && productToEdit) {
       setProductName(productToEdit.productName);
@@ -9,11 +14,6 @@ const AddProduct = ({ onAddProduct, editMode, productToEdit, category }) => {
       setInStock(productToEdit.inStock);
     }
   }, [editMode, productToEdit]);
-
-  const [productName, setProductName] = useState("");
-  const [price, setPrice] = useState("");
-  const [categorcies, setCategorcies] = useState("Electronics");
-  const [inStock, setInStock] = useState(false);
 
   function reset() {
     setProductName("");
